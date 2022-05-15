@@ -1,4 +1,4 @@
-package writeTest.guangTest;
+package com.realgang.writeTest.guangTest;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package writeTest.huaWeiTest.testOne;
+package com.realgang.writeTest.huaWeiTest.testOne;
 
 import java.util.ArrayList;
 import java.util.Arrays;

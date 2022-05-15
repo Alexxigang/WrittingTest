@@ -1,4 +1,4 @@
-package writeTest.baiduTestTwo;
+package com.realgang.writeTest.baiduTestTwo;
 
 import java.util.Scanner;
 

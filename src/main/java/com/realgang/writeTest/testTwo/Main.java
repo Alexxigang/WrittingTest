@@ -1,4 +1,4 @@
-package writeTest.testTwo;
+package com.realgang.writeTest.testTwo;
 
 
 import java.util.Arrays;
