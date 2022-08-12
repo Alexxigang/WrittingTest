@@ -1,2 +1,4 @@
-package com.AndrewLau.writeTest.demo.testOne;public class demo {
+package com.AndrewLau.writeTest.demo.testOne;
+
+public class demo {
 }
