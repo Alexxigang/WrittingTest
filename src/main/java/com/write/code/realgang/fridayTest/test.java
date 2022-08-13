@@ -6,4 +6,5 @@ package com.write.code.realgang.fridayTest;
  * @create: 2022-08-12 23:42
  **/
 public class test {
+
 }
