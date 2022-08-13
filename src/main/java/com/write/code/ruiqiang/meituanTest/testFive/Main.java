@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
+    public void solution() {
+
+    }
     public static void main(String[] args) {
         TreeBuilder tb = new TreeBuilder();
         TreeBuilder.TreeNode treeNode = tb.arrayToBTree(new Object[]{1,2,3,4,5,6,7});
     }
+
+
 }
 
 class TreeBuilder {
