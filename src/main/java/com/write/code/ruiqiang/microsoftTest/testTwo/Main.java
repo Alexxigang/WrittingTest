@@ -7,17 +7,12 @@ import java.util.Stack;
 
 public class Main {
     public int solution(int[] X,int[] Y){
-<<<<<<< HEAD
         double[] nums = new double[X.length];
-        for(int i = 0;i < X.length;i++){
-            nums[i] = Double.valueOf(X[i])/Double.valueOf(Y[i]);
-=======
-        Stack<Integer> st = new Stack<>();
-        double[] fractions = new double[X.length];
-        for(int i=0;i<X.length;i++){
-            fractions[i] = Double.valueOf(X[i])/Double.valueOf(Y[i]);
->>>>>>> 4a619e17cc50d7c7e21352e3862f20f5b4f529c3
+        for(int i = 0;i < X.length;i++) {
+            nums[i] = Double.valueOf(X[i]) / Double.valueOf(Y[i]);
         }
+        Stack<Integer> st = new Stack<>();
+
         Arrays.sort(nums);
         int res = 0;
 

@@ -10,8 +10,7 @@ import java.util.Scanner;
  * @create: 2022-08-13 11:59
  **/
 public class Main {
-    int maxMoney = 0;
-    int sum = 0;
+    int result = 0;
 
     public void solution() {
         Scanner reader = new Scanner(System.in);
@@ -25,33 +24,34 @@ public class Main {
         TreeBuilder tb = new TreeBuilder();
         TreeBuilder.TreeNode treeNode = tb.arrayToBTree(nodes);
 
-        backTrack(treeNode);
+        backTrack(treeNode,0);
 
-        System.out.println(maxMoney);
+        System.out.println(result);
     }
 
-    public void backTrack(TreeBuilder.TreeNode root) {
-        if (root == null) {
-            maxMoney = Math.max(maxMoney,sum);
+    public void backTrack(TreeBuilder.TreeNode root,int curRes){
+        if(root==null)return;
+        curRes += root.data;
+        if(root.left==null&&root.right==null){
+
+            result = Math.max(result,curRes);
             return;
         }
-        sum += root.data;
-        if (root.left != null) {
-            sum += root.left.data;
-            backTrack(root.left);
-            sum -= root.left.data;
+
+        if(root.left!=null){
+            backTrack(root.left,curRes);
         }
 
-        if (root.right != null) {
-            sum += root.right.data;
-            backTrack(root.right);
-            sum -= root.right.data;
+        if(root.right!=null){
+            backTrack(root.right,curRes);
         }
+
     }
 
     public static void main(String[] args) {
-        TreeBuilder tb = new TreeBuilder();
-        TreeBuilder.TreeNode treeNode = tb.arrayToBTree(new int[]{1,2,3,4,5,6,7});
+        Main mainClass = new Main();
+        mainClass.solution();
+
     }
 
 
