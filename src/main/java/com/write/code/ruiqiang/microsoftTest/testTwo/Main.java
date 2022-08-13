@@ -3,12 +3,20 @@ package com.write.code.ruiqiang.microsoftTest.testTwo;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class Main {
     public int solution(int[] X,int[] Y){
+<<<<<<< HEAD
         double[] nums = new double[X.length];
         for(int i = 0;i < X.length;i++){
             nums[i] = Double.valueOf(X[i])/Double.valueOf(Y[i]);
+=======
+        Stack<Integer> st = new Stack<>();
+        double[] fractions = new double[X.length];
+        for(int i=0;i<X.length;i++){
+            fractions[i] = Double.valueOf(X[i])/Double.valueOf(Y[i]);
+>>>>>>> 4a619e17cc50d7c7e21352e3862f20f5b4f529c3
         }
         Arrays.sort(nums);
         int res = 0;
