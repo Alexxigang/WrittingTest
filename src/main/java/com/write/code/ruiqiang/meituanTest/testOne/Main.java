@@ -15,7 +15,31 @@ public class Main {
         }
         Arrays.sort(deadlines);
         int times = 0;
-        int curStep = deadlines[0];
+        int limit = n*t;
+        int curIndex = -1;
+        for(int i=n-1;i>=0;i--){
+            if(deadlines[i]<limit){
+                curIndex = i;
+                break;
+            }
+        }
+        if(curIndex==-1){
+            System.out.println(times);
+            return;
+        }
+        int curStep = deadlines[curIndex];
+        for(int i=curIndex-1;i>=0;i--){
+            if(curStep<t){
+                times ++;
+            }
+            else if(deadlines[i]> curStep-t){
+                times += 1;
+            }
+            else{
+                curStep = deadlines[i];
+            }
+        }
+        System.out.println(times);
 
 
     }
