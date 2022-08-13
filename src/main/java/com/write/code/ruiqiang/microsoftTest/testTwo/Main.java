@@ -3,9 +3,11 @@ package com.write.code.ruiqiang.microsoftTest.testTwo;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class Main {
     public int solution(int[] X,int[] Y){
+        Stack<Integer> st = new Stack<>();
         double[] fractions = new double[X.length];
         for(int i=0;i<X.length;i++){
             fractions[i] = Double.valueOf(X[i])/Double.valueOf(Y[i]);
