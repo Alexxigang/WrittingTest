@@ -5,7 +5,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public void solution() {
+    }
 
+    public static void main(String[] args) {
+        Main mainClass = new Main();
+        mainClass.solution();
     }
 }
