@@ -7,26 +7,27 @@ import java.util.Stack;
 
 public class Main {
     public int solution(int[] X,int[] Y){
-        Stack<Integer> st = new Stack<>();
-        double[] fractions = new double[X.length];
-        for(int i=0;i<X.length;i++){
-            fractions[i] = Double.valueOf(X[i])/Double.valueOf(Y[i]);
+        double[] nums = new double[X.length];
+        for(int i = 0;i < X.length;i++) {
+            nums[i] = Double.valueOf(X[i]) / Double.valueOf(Y[i]);
         }
-        Arrays.sort(fractions);
-        Map<Double,Integer> table = new HashMap<>();
-        int result = 0;
-        for(int i=0;i<X.length;i++){
-            double tempt = fractions[i];
-            int right = i+1;
-            while(right< fractions.length&&tempt + fractions[right] <= 1){
-                if(tempt + fractions[right]==1){
-                    result+= 1;
+        Stack<Integer> st = new Stack<>();
+
+        Arrays.sort(nums);
+        int res = 0;
+
+        for(int i = 0;i < X.length;i++){
+            double fraction = nums[i];
+            int next = i+1;
+            while(next < nums.length && fraction + nums[next] <= 1){
+                if(fraction + nums[next]==1){
+                    res+= 1;
                 }
-                right ++;
+                next++;
             }
 
         }
-        return result;
+        return res;
     }
 
     public static void main(String[] args) {
