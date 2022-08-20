@@ -2,11 +2,7 @@ package com.write.code.realgang.meituanTestTwo.testTwo;
 
 import java.util.*;
 
-/**
- * @description:
- * @author: RealGang
- * @create: 2022-08-13 11:59
- **/
+
 public class Main {
 
     public int[][] direction = new int[][]{{0,-1},{1,0},{0,1},{-1,0}};
@@ -76,20 +72,7 @@ public class Main {
             for (int j = 0;j < n;j++) {
                 if (map[i][j] == 3) {
                     res.add(new int[]{j,i});
-//                    if (i == 0 && j == 0) {
-//                        finalX = 0;
-//                        finalY = 0;
-//                    } else {
-//                        if (finalX != 0 && finalY != 0) {
-//                            if (j < finalX || j == finalX && i < finalY) {
-//                                finalX = j;
-//                                finalY = i;
-//                            }
-//                        } else {
-//                            finalX = j;
-//                            finalY = i;
-//                        }
-//                    }
+
                     finalX = j;
                     finalY = i;
                 }
