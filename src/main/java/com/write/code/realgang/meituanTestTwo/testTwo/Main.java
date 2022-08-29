@@ -104,16 +104,18 @@ public class Main {
                 map[startY][startX] = 3;
             }
 
-
             return;
         }
 //        if (!(startX == x && startY == y)) {
 //            map[startY][startX] += 1;
 //        }
-
+        map[startY][startX] = -1;
         for (int i = 0;i < direction.length;i++) {
             int nextX = startX + direction[i][0];
             int nextY = startY + direction[i][1];
+            if (map[nextY][nextX] == -1) {
+                continue;
+            }
             if (isValid(map,x,y,nextX,nextY)) {
                 backTrack(map,x,y,nextX,nextY,d - 1);
             }
