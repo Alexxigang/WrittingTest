@@ -1,9 +1,6 @@
 package com.write.code.realgang.weilaiTest.testThree;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @description: main
@@ -47,9 +44,19 @@ public class Main {
             }
 
             if (num < goodsNum) {
+                List<Integer> arr = new ArrayList<>();
                 for (int j = num;j < goodsNum;j++) {
-                    sum += nums.get(j);
+                    arr.add(nums.get(j));
+//                    sum += nums.get(j);
                 }
+                Collections.sort(arr,(a,b) -> {
+                    return b - a;
+                });
+                for (int j = 0;j < goodsNum - num;j++) {
+//                    arr.add(nums.get(j));
+                    sum += arr.get(j);
+                }
+
             }
 
             res.add(sum);
