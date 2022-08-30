@@ -44,17 +44,20 @@ public class Main {
             }
 
             if (num < goodsNum) {
-                List<Integer> arr = new ArrayList<>();
-                for (int j = num;j < goodsNum;j++) {
-                    arr.add(nums.get(j));
-//                    sum += nums.get(j);
+
+                int count = 0;
+                for (int j = num;j < n && count < (goodsNum - num);j++) {
+                    if (nums.get(j) >= 0) {
+                        sum += nums.get(j);
+                        count++;
+                    }
                 }
-                Collections.sort(arr,(a,b) -> {
-                    return b - a;
-                });
-                for (int j = 0;j < goodsNum - num;j++) {
-//                    arr.add(nums.get(j));
-                    sum += arr.get(j);
+
+                for (int j = nums.size() - 1;count < (goodsNum - num) && j >= num;j--) {
+                    if (nums.get(j) < 0) {
+                        sum += nums.get(j);
+                        count++;
+                    }
                 }
 
             }
