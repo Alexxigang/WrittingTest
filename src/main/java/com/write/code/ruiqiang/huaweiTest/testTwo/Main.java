@@ -89,7 +89,6 @@ public class Main {
     }
     public void getSolute(int[][] matrix,int startX,int startY,int x,int y){
         int n = matrix.length,m=matrix[0].length;
-        Queue<>
         if(x == startX&&y==startY){
             dp[x][y] = 0;
         }

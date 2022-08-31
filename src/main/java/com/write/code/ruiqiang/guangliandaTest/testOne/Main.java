@@ -18,16 +18,16 @@ public class Main {
         for(int i=0;i<n;i++){
             ends[i] = sc.nextInt();
         }
-        for(int i=1;i<n+1;i++){
-            startMap[starts[i-1]] = i-1;
-            endMap[ends[i-1]] = i-1;
-        }
+//        for(int i=1;i<n+1;i++){
+//            startMap[starts[i-1]] = i-1;
+//            endMap[ends[i-1]] = i-1;
+//        }
         int num = 0;
-        for(int i=1;i<n+1;i++){
-            if(startMap[i]>=endMap[i]){
-                num ++;
-            }
-        }
+//        for(int i=1;i<n+1;i++){
+//            if(startMap[i]>=endMap[i]){
+//                num ++;
+//            }
+//        }
         LinkedList<Integer> startQue = new LinkedList<>();
         LinkedList<Integer> endStack = new LinkedList<>();
         for(int i=0;i<n;i++){
@@ -37,10 +37,14 @@ public class Main {
             int cur = startQue.peekFirst();
             if(cur!=ends[i]){
                 num ++;
-                endStack.addFirst(ends[i]);
+                endStack.addLast(ends[i]);
             }
             else{
-
+                startQue.pollFirst();
+                while(!startQue.isEmpty()&&!endStack.isEmpty()&&startQue.peekFirst()==endStack.peekLast()){
+                    startQue.pollFirst();
+                    endStack.pollLast();
+                }
             }
         }
         System.out.println(num);
