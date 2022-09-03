@@ -20,27 +20,53 @@ public class Main {
             }
             return b[1]-a[1];
         });
-        int m = (int)Math.ceil(n/c);
-        int[][] rooms = new int[m][c];
+        int m = (int)Math.ceil((double)n/c);
+        System.out.println(m);
         int last = n%m;
-        int sum = 0,num=0;
+        int sum = 0,num=0,preSum = 0;
         int k = r%m;
         for(int i=1;i<=n-last;i++){
             int temptK = i%m,temptIndex = i/m;
-            rooms[temptIndex][temptK] = grades[i-1][1];
+//            rooms[temptIndex][temptK] = grades[i-1][1];
+            preSum += grades[i-1][1];
             if(r <= n-last && temptK == k){
                 sum += grades[i-1][1];
                 num += 1;
             }
         }
         if(num > 0){
-            if(last == c)
+            if(last == c){
+                for(int i= n-last+1;i<=n;i++){
+                    if(i%m == k){
+                        sum += grades[i-1][1];
+                        num += 1;
+                    }
+                }
+                double res = (double)((double)sum/(double)num);
+                System.out.print(res);
+            }
+            else{
+                int lastSum = 0;
+                for(int i= n-last+1;i<=n;i++){
+                    lastSum += grades[i-1][1];
+                }
+                int allSum= last * sum + lastSum;
+                double meanOne = (double)(allSum)/(num+1) + (double)(sum)/num;
+                double res = (double)(meanOne/(last +1));
+                System.out.print(res);
+            }
+        }
+        else{
+            int allSum = preSum + grades[r-1][1]*c;
+            double res = (double)((double)allSum/(double)((m)*c));
+            System.out.print(res);
         }
 
 
     }
 
     public static void main(String[] args) {
-
+        Main ma = new Main();
+        ma.solute();
     }
 }

@@ -52,6 +52,7 @@ public class Main {
                 System.out.printf(res[k] + " ");
             }
             System.out.printf(String.valueOf(res[k]));
+            System.out.println();
 
         }
     }

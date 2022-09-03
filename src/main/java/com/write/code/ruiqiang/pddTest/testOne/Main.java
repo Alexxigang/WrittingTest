@@ -8,7 +8,7 @@ public class Main {
     public void solute(){
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-        List<>
+//        List<>
         for(int i=0;i<t;i++){
 
         }
