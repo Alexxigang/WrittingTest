@@ -20,11 +20,22 @@ public class Main {
             char[] chars = str.toCharArray();
             int index = 0;
             int count = 0;
-
+            int countLeft = k - count;
             while (index < len && count < k) {
                 char c = chars[index];
 
-                while (c > 'a' && count < k) {
+                while (index < len && chars[index] > 'a' && count + chars[index] - 'a' + 1 < countLeft) {
+                    index++;
+                    count += chars[index] - 'a' + 1;
+                }
+                if (index == len) {
+                    continue;
+                }
+                for (int j = 0;j <= index;j++) {
+                    chars[j] = 'a';
+                }
+                countLeft -= count;
+                while (c > 'a' && count < countLeft) {
                     for (int j = 0;j < len;j++) {
                         if (chars[j] == c) {
                             chars[j] = (char)(c - 1);
@@ -32,6 +43,7 @@ public class Main {
                     }
 
                     count++;
+                    countLeft--;
                     c = (char)(c - 1);
                 }
 
