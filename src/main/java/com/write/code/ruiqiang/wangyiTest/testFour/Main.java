@@ -16,6 +16,8 @@ public class Main {
             System.out.println(-1);
             return ;
         }
+        Object o = new Object();
+
         int left=0,right=0;
         int cur_small = 0,res=0;
         int[] minus = new int[n-1];
@@ -57,6 +59,9 @@ public class Main {
 
     public static void main(String[] args) {
         Main ma = new Main();
-        ma.solution();
+        int[] x = new int[0];
+//        System.out.println(x[0]);
+        System.out.println(x.length);
+//        ma.solution();
     }
 }

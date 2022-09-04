@@ -1,9 +1,6 @@
 package com.write.code.ruiqiang.huaweiTest.testTwo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -11,16 +8,19 @@ public class Main {
     int pathStep = 0;
     int n,m;
     int [][] visited;
+    int[][] dp;
     public void solute(){
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
         int[][] matrix = new int[n][m];
         visited = new int[n][m];
+        dp = new int[n][m];
         int startX=0,startY=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 matrix[i][j] = sc.nextInt();
+                dp[i][j] = Integer.MAX_VALUE;
                 if (matrix[i][j] == 2){
                     startX = i;
                     startY = j;
@@ -59,7 +59,6 @@ public class Main {
             for(int i=0;i<4;i++){
                 int xStep = steps[i][0],yStep = steps[i][1];
                 if(isValid(matrix,x+xStep,y+yStep)&&(matrix[x+xStep][y+yStep]==1)){
-
                     matrix[x+xStep][y+yStep] = 0;
                     change_pos.add(Arrays.asList(x+xStep,y+yStep));
                 }
@@ -71,9 +70,59 @@ public class Main {
         for(int i=0;i<4;i++){
             int xStep = steps[i][0],yStep = steps[i][1];
             if(isValid(matrix,x+xStep,y+yStep)&&(visited[x+xStep][y+yStep]==0)){
-//                System.out.println(x+xStep);
-//                System.out.println(y+yStep);
                 back_trace(matrix,x+xStep,y+yStep);
+            }
+        }
+        visited[x][y] = 0;
+
+        pathStep -= cost;
+//        System.out.println(pathStep);
+        if(matrix[x][y]==6){
+            for(int i=0;i<4;i++){
+                for(List<Integer> ls:change_pos){
+                    int tempX = ls.get(0),tempY = ls.get(1);
+                    matrix[tempX][tempY] = 1;
+                }
+            }
+        }
+
+    }
+    public void getSolute(int[][] matrix,int startX,int startY,int x,int y){
+        int n = matrix.length,m=matrix[0].length;
+        if(x == startX&&y==startY){
+            dp[x][y] = 0;
+        }
+        int[][] steps = {{-1,0},{1,0},{0,-1},{0,1}};
+        int cost = 1;
+        List<List<Integer>> change_pos = new ArrayList<>();
+        if(matrix[x][y]==1||visited[x][y] == 1){
+            return;
+        }
+        else if(matrix[x][y]==4){
+            cost = 3;
+        }
+        else if(matrix[x][y] == 2){
+            cost = 0;
+        }
+
+        else if(matrix[x][y]==6){
+
+            for(int i=0;i<4;i++){
+                int xStep = steps[i][0],yStep = steps[i][1];
+                if(isValid(matrix,x+xStep,y+yStep)&&(matrix[x+xStep][y+yStep]==1)){
+                    matrix[x+xStep][y+yStep] = 0;
+                    change_pos.add(Arrays.asList(x+xStep,y+yStep));
+                }
+            }
+        }
+        pathStep += cost;
+        dp[x][y] = Math.min(dp[x][y],dp[startX][startY]+cost);
+        visited[x][y] = 1;
+//        System.out.println(pathStep);
+        for(int i=0;i<4;i++){
+            int xStep = steps[i][0],yStep = steps[i][1];
+            if(isValid(matrix,x+xStep,y+yStep)&&(visited[x+xStep][y+yStep]==0)){
+                getSolute(matrix,x,y,x+xStep,y+yStep);
             }
         }
         visited[x][y] = 0;
