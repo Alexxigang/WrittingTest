@@ -37,20 +37,33 @@ public class Main {
                 }
                 continue;
             }
+            if (nums[i] == 0) {
+                zeroNum++;
+                continue;
+            }
 
             if (nums[i] < 0) {
                 minusNum++;
             }
-            if (nums[i] == 0) {
-                zeroNum++;
-            }
+
 
             count += Math.abs(Math.abs(nums[i]) - 1);
         }
 
+        if (zeroNum > 0) {
+            count += zeroNum;
+        } else {
+            if (minusNum % 2 != 0) {
+                count += 2;
+            }
+        }
+
+        System.out.println(count);
+
     }
 
     public static void main(String[] args) {
-
+        Main main = new Main();
+        main.solution();
     }
 }
