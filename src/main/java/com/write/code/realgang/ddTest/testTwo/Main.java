@@ -1,5 +1,7 @@
 package com.write.code.realgang.ddTest.testTwo;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Scanner;
  * @create: 2022-09-04 19:50
  **/
 public class Main {
+    Map<Integer,Integer> map;
 
     public void solution() {
         Scanner reader = new Scanner(System.in);
@@ -27,6 +30,7 @@ public class Main {
         }
 
         int[] res = new int[n];
+        map = new HashMap<>();
 
         for (int i = 0;i < n;i++) {
             int count = 0;
@@ -46,6 +50,9 @@ public class Main {
     }
 
     public int getBeauty(int num) {
+        if (map.containsKey(num)) {
+            return map.get(num);
+        }
         int res = 0;
 
         while (num > 0) {
@@ -53,6 +60,7 @@ public class Main {
             num /= 10;
         }
 
+        map.put(num,res);
         return res;
     }
     public static void main(String[] args) {
