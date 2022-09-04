@@ -17,6 +17,10 @@ public class Main {
         int sum;
         double mean;
         int maxRoom = 0;
+        int start = 0;
+        while(start <= n-1){
+
+        }
         while(end >=0){
 
             sum = 0;
