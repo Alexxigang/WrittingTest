@@ -30,7 +30,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int m = sc.nextInt();
         int n = sc.nextInt();
-        String[] str = new String[m];
         char[][] block = new char[m][n];
         sc.nextLine();
         for(int i=0;i<m;i++){
@@ -91,8 +90,9 @@ public class Main {
                 // 判断这一步是否合法
                 if (x < 0 || x >= block.length || y < 0 || y >= block[0].length)
                     continue;
-                if (block[x][y] == 'X'||flags[x][y]==1)
+                if (block[x][y] == 'X')
                     continue;
+                if(preNode!=null&&(preNode.x == x&&preNode.y==y))continue;
                 int dis = tmp.dis + 1;
                 if(preNode!=null){
                     int xPreDirect = Math.abs(preNode.x-tmp.x);
