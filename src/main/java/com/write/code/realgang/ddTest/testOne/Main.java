@@ -35,6 +35,7 @@ public class Main {
             if (right > left) {
                 if (taozi[left] > k * sum / (right - left + 1)) {
                     left++;
+                    sum -= taozi[left];
                 }
             }
             maxNum = Math.max(maxNum,right - left + 1);
