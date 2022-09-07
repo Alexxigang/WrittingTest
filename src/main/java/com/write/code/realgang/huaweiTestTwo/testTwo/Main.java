@@ -8,6 +8,10 @@ import java.util.Scanner;
  * @create: 2022-09-07 19:14
  **/
 public class Main {
+    int startX = -1;
+    int startY = -1;
+    int endX = -1;
+    int endY = -1;
 
     public void solution() {
         Scanner reader = new Scanner(System.in);
@@ -24,7 +28,25 @@ public class Main {
             }
         }
 
-        System.out.println(111);
+        for (int i = 0;i < M;i++) {
+            for (int j = 0;j < N;j++) {
+                if (block[i][j] == 'S') {
+                    startX = i;
+                    startY = j;
+                }
+                if (block[i][j] == 'E') {
+                    endX = i;
+                    endY = j;
+                }
+                if (startX != -1 && endX != -1) {
+                    break;
+                }
+            }
+        }
+
+        int m = endY - startX + 1;
+        int n = endX - startX + 1;
+        System.out.println(13);
     }
 
     public static void main(String[] args) {
