@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 class Node {
     int x, y;
-    Node pre;
+    Node pre=null;
     int dis = Integer.MAX_VALUE;
 
     public Node(int x, int y, int dis, Node pre) {
@@ -25,6 +25,7 @@ public class Main {
     int[]  ends;
     int[][] matrix;
     int minDis = Integer.MAX_VALUE;
+    int[][] flags;
     public void solution(){
         Scanner sc = new Scanner(System.in);
         int m = sc.nextInt();
@@ -39,14 +40,15 @@ public class Main {
             for(int j=0;j<n;j++){
                 block[i][j] = chars[j];
             }
-            System.out.println(str[i]);
+//            System.out.println(str[i]);
         }
         //需要记录上一次最近的走法的方向。
-        int[][] flags = new int[m][n];
+        flags = new int[m][n];
+        flags[0][0] = 1;
         starts = new int[2];
         ends = new int[2];
         for(int i=0;i<m;i++){
-            for(int j=0;i<n;j++){
+            for(int j=0;j<n;j++){
 
                 if(block[i][j]=='S'){
                     starts[0] = i;
@@ -89,18 +91,22 @@ public class Main {
                 // 判断这一步是否合法
                 if (x < 0 || x >= block.length || y < 0 || y >= block[0].length)
                     continue;
-                if (block[x][y] == 'X')
+                if (block[x][y] == 'X'||flags[x][y]==1)
                     continue;
-                int xPreDirect = Math.abs(preNode.x-tmp.x);
-                int yPreDirect = Math.abs(preNode.y-tmp.y);
                 int dis = tmp.dis + 1;
-                //判断方向有无改变
-                if(xPreDirect!=Math.abs(move[i][0])||yPreDirect!=Math.abs(move[i][1])){
-                    dis += 1;
+                if(preNode!=null){
+                    int xPreDirect = Math.abs(preNode.x-tmp.x);
+                    int yPreDirect = Math.abs(preNode.y-tmp.y);
+                    //判断方向有无改变
+                    if(xPreDirect!=Math.abs(move[i][0])||yPreDirect!=Math.abs(move[i][1])){
+                        dis += 1;
+                    }
                 }
                 if(x==er&&y==ec){
                     minDis = Math.min(minDis,dis);
+                    break;
                 }
+                flags[x][y] = 1;
                 Node cur = new Node(x,y,dis,tmp);
                 queue.offer(cur);
 
