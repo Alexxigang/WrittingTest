@@ -7,11 +7,11 @@ package com.write.code.realgang.shangtangTest.testOne;
  **/
 public class Main {
 
-    public void rotate(int[][] matrix) {
+    public int[][] rotate(int[][] matrix) {
         // 思路：先沿着对角线反转，然后反转每一行，就相当于顺时针翻转矩阵
         int n = matrix.length;
         if (n == 1) {
-            return;
+            return matrix;
         }
         // 先沿着对角线反转
         for (int i = 0;i < n;i++) {
@@ -27,6 +27,7 @@ public class Main {
             reverse(row);
         }
 
+        return matrix;
     }
 
     private void reverse(int[] row) {
