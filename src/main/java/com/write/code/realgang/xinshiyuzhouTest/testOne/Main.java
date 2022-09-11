@@ -39,7 +39,24 @@ public class Main {
                         break;
                     }
                 }
-
+                if (isValid) {
+                    for (int k = i + 1;k < j;k++) {
+                        if (curLoc == virtualMan[k][0]) {
+                            continue;
+                        }
+                        if (curLoc > virtualMan[k][0]) {
+                            if (virtualMan[k][0] + virtualMan[k][1] * tempTime < curLoc) {
+                                isValid = false;
+                                break;
+                            }
+                        } else {
+                            if (virtualMan[k][0] - virtualMan[k][1] * tempTime > curLoc) {
+                                isValid = false;
+                                break;
+                            }
+                        }
+                    }
+                }
                 if (isValid) {
                     for (int k = j + 1;k < n;k++) {
                         if (virtualMan[k][0] + virtualMan[k][1] * tempTime < curLoc) {
