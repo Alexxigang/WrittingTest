@@ -1,11 +1,20 @@
 package com.write.code.realgang.lazadaTest;
 
+import java.util.Scanner;
+
 /**
  * @description:
  * @author: RealGang
  * @create: 2022-09-21 20:22
  **/
-public class TestOne {
+public class Main {
+
+    public void solution() {
+        Scanner reader = new Scanner(System.in);
+        int n = reader.nextInt();
+
+        System.out.println(nextGreaterElement(n));
+    }
     public int nextGreaterElement(int n) {
         char[] nums = Integer.toString(n).toCharArray();
         int i = nums.length - 2;
@@ -37,5 +46,10 @@ public class TestOne {
             i++;
             j--;
         }
+    }
+
+    public static void main(String[] args) {
+        Main mainClass = new Main();
+        mainClass.solution();
     }
 }
