@@ -1,9 +1,9 @@
-package com.write.code.realgang.xinshiyuzhouTest.testOne;
-
+//package com.write.code.ruiqiang.xinshiyuzhouTest;
+package com.write.code.ruiqiang.mindVerse;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class TestOne {
 
     public void solution() {
         Scanner reader = new Scanner(System.in);
@@ -72,7 +72,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main main = new Main();
+        TestOne main = new TestOne();
         main.solution();
     }
 }

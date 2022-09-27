@@ -20,10 +20,8 @@ class Node {
 
 public class Main {
 
-    int[][] memo;
     int[] starts;
     int[]  ends;
-    int[][] matrix;
     int minDis = Integer.MAX_VALUE;
     int[][] flags;
     public void solution(){
@@ -33,13 +31,11 @@ public class Main {
         char[][] block = new char[m][n];
         sc.nextLine();
         for(int i=0;i<m;i++){
-//            str[i] = sc.nextLine();
             String s = sc.nextLine();
             char[] chars = s.toCharArray();
             for(int j=0;j<n;j++){
                 block[i][j] = chars[j];
             }
-//            System.out.println(str[i]);
         }
         //需要记录上一次最近的走法的方向。
         flags = new int[m][n];
@@ -78,8 +74,6 @@ public class Main {
                 }
             }
         }
-//        int minDis = Integer.MAX_VALUE;
-//        matrix[sr][sc] = 1;// 标记走过
         queue.offer(start);// 加入队列
         while (!queue.isEmpty()) {
             Node tmp = queue.poll();
@@ -104,7 +98,9 @@ public class Main {
                 }
                 if(x==er&&y==ec){
                     minDis = Math.min(minDis,dis);
-                    break;
+                    System.out.println(dis);
+                    continue;
+//                    break;
                 }
                 flags[x][y] = 1;
                 Node cur = new Node(x,y,dis,tmp);
@@ -112,16 +108,22 @@ public class Main {
 
             }
         }
-//        return minDis;
 
     }
 
-//    public void dfs(String[] str, int sr, int sc,int er, int ec){
-//
-//    }
+
+
 
     public static void main(String[] args) {
         Main ma = new Main();
-        ma.solution();
+//        ma.solution();
+        Integer i = new Integer(42);
+        Long I = new Long(42);
+        Double d = new Double(42.0);
+//        boolean a1 = i==I;
+        System.out.println(i.equals(I));
+        System.out.println(d.equals(i));
+        System.out.println(i.equals(42));
+
     }
 }

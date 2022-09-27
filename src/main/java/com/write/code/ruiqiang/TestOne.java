@@ -1,9 +1,9 @@
-package com.write.code.realgang.xinshiyuzhouTest.testOne;
+package com.write.code.ruiqiang;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class TestOne {
 
     public void solution() {
         Scanner reader = new Scanner(System.in);
@@ -34,24 +34,7 @@ public class Main {
                         break;
                     }
                 }
-                if (isValid) {
-                    for (int k = i + 1;k < j;k++) {
-                        if (curLoc == virtualMan[k][0]) {
-                            continue;
-                        }
-                        if (curLoc > virtualMan[k][0]) {
-                            if (virtualMan[k][0] + virtualMan[k][1] * tempTime < curLoc) {
-                                isValid = false;
-                                break;
-                            }
-                        } else {
-                            if (virtualMan[k][0] - virtualMan[k][1] * tempTime > curLoc) {
-                                isValid = false;
-                                break;
-                            }
-                        }
-                    }
-                }
+
                 if (isValid) {
                     for (int k = j + 1;k < n;k++) {
                         if (virtualMan[k][0] + virtualMan[k][1] * tempTime < curLoc) {
@@ -72,7 +55,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main main = new Main();
+        TestOne main = new TestOne();
         main.solution();
     }
 }
