@@ -1,5 +1,6 @@
 package com.write.code.realgang.xiechengTest.testFour;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -23,22 +24,24 @@ public class Main {
         int count = 0;
         for (int i = 0;i < n - 1;i++) {
             for (int j = i + 1;j < n;j++) {
-                if (getTailZero(nums[i] * nums[j]) >= x) {
+                if (getTailZero(nums[i] * nums[j],x)) {
                     count++;
                 }
             }
         }
-
         System.out.println(count);
     }
 
-    public int getTailZero(int num) {
+    public boolean getTailZero(int num, int x) {
         int res = 0;
         while (num > 0 && num % 10 == 0) {
             res++;
+            if (res >= x) {
+                return true;
+            }
             num /= 10;
         }
-        return res;
+        return false;
     }
 
     public static void main(String[] args) {
