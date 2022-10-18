@@ -1,5 +1,6 @@
 package com.write.code.realgang.xiechengTest.testTwo;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -13,33 +14,38 @@ public class Main {
         Scanner reader = new Scanner(System.in);
         String str = reader.nextLine();
         char[] chars = str.toCharArray();
+        boolean[] used = new boolean[chars.length];
+        Arrays.sort(chars);
         res = new HashSet<>();
-        backTrack(chars,new ArrayList<>(),new HashSet<>());
+        backTrack(chars,new ArrayList<>(),used);
 
         System.out.println(res.size());
     }
 
-    public void backTrack(char[] chars,List<Character> path, Set<Integer> visitedIndexs) {
+    public void backTrack(char[] chars,List<Character> path,boolean[] used) {
         if (path.size() == chars.length) {
             res.add(new ArrayList<>(path));
             return;
         }
 
         for (int i = 0;i < chars.length;i++) {
-            if (visitedIndexs.contains(i)) {
+            if (i > 0 && chars[i] == chars[i - 1] && used[i - 1] == false) {
+                continue;
+            }
+            if (used[i]) {
                 continue;
             }
 
             if (path.size() > 0 && chars[i] == path.get(path.size() - 1)) {
                 continue;
             }
-            visitedIndexs.add(i);
+            used[i] = true;
             path.add(chars[i]);
 
-            backTrack(chars,path,visitedIndexs);
+            backTrack(chars,path,used);
 
             path.remove(path.size() - 1);
-            visitedIndexs.remove(i);
+            used[i] = false;
         }
     }
 
