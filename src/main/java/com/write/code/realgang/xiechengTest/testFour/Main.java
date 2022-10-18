@@ -24,7 +24,7 @@ public class Main {
         int count = 0;
         for (int i = 0;i < n - 1;i++) {
             for (int j = i + 1;j < n;j++) {
-                if (getTailZero(nums[i] * nums[j],x)) {
+                if (getTailZero((long)nums[i] * nums[j],x)) {
                     count++;
                 }
             }
@@ -32,7 +32,7 @@ public class Main {
         System.out.println(count);
     }
 
-    public boolean getTailZero(int num, int x) {
+    public boolean getTailZero(long num, int x) {
         int res = 0;
         while (num > 0 && num % 10 == 0) {
             res++;
