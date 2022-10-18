@@ -1,5 +1,7 @@
 package com.write.code.realgang.xiechengTest.testFour;
 
+import java.util.Scanner;
+
 /**
  * @description: main
  * @author: RealGang
@@ -8,10 +10,39 @@ package com.write.code.realgang.xiechengTest.testFour;
 public class Main {
 
     public void solution() {
+        Scanner reader = new Scanner(System.in);
+        int n = reader.nextInt();
+        int x = reader.nextInt();
 
+        int[] nums = new int[n];
+
+        for (int i = 0;i < n;i++) {
+            nums[i] = reader.nextInt();
+        }
+
+        int count = 0;
+        for (int i = 0;i < n - 1;i++) {
+            for (int j = i + 1;j < n;j++) {
+                if (getTailZero(nums[i] * nums[j]) >= x) {
+                    count++;
+                }
+            }
+        }
+
+        System.out.println(count);
+    }
+
+    public int getTailZero(int num) {
+        int res = 0;
+        while (num > 0 && num % 10 == 0) {
+            res++;
+            num /= 10;
+        }
+        return res;
     }
 
     public static void main(String[] args) {
-
+        Main mainClass = new Main();
+        mainClass.solution();
     }
 }
