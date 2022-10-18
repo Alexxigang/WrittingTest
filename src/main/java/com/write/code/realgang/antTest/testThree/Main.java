@@ -1,4 +1,4 @@
-package com.write.code.realgang.arraySort.antTest.testThree;
+package com.write.code.realgang.antTest.testThree;
 
 import java.util.Scanner;
 

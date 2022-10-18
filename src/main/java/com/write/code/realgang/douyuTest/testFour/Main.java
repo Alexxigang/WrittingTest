@@ -33,8 +33,8 @@ public class Main {
                         continue;
                     }
 
-                    if (Math.abs(nums[i] - dp[i][j]) % 3 != 0) {
-                        dp[i][j] = nums[i] - dp[i][j];
+                    if (Math.abs(nums[i] - dp[i + 1][j]) % 3 != 0) {
+                        dp[i][j] = nums[i] - dp[i + 1][j];
                     }
 
                     if (Math.abs(nums[j] - dp[i][j - 1]) % 3 != 0) {
