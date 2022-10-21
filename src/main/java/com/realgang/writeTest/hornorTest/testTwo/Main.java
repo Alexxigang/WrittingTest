@@ -1,4 +1,4 @@
-package writeTest.hornorTest.testTwo;
+package com.realgang.writeTest.hornorTest.testTwo;
 
 import java.util.PriorityQueue;
 import java.util.Scanner;
